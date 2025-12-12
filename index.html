@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="tu.css">
+  <title>TUMUSIFU SITE</title>
+</head>
+<body>
+  <header>
+    <span>TUMUSIFU SITE</span>
+  </header>
+  <div class="posts">
+    <h2>NEWS FROM ALL AROUND</h2>
+    <div class="post1">
+      <h1> Uvira, DR Congo — Rwanda-backed rebel group M23 has seized control of the strategic eastern city of Uvira</h1>
+
+<span>By ndizeye tumusifu</span>
+
+<p>marking a sharp escalation in the conflict in the South Kivu province and threatening regional peace efforts. Thousands of civilians are fleeing and government troops have retreated, underscoring the deepening crisis.</p>
+
+<p>M23 fighters, allied with the Alliance Fleuve Congo coalition, announced on Wednesday that they had taken Uvira, an important port city on Lake Tanganyika near the Burundi border, after a rapid offensive that began earlier this month. The advance comes despite a recent U.S.-brokered peace deal between the DRC and Rwanda that did not include the rebels.</p>
+
+<p>Uvira’s capture gives M23 control of a key economic and logistical hub, weakening the Congolese government’s position in South Kivu and potentially opening a route toward further territorial gains. The fall of Uvira also threatens to destabilize neighbouring Burundi, which has closed border crossings and declared them military zones in response to the fighting.</p>
+
+<p>The offensive has triggered a mass displacement of civilians, with tens of thousands fleeing toward Burundi and other safe areas. Residents describe Uvira as a ghost town, with businesses closed and sporadic gunfire still heard in parts of the city.</p>
+
+<p>The Congolese government accuses Rwanda of backing M23 with troops and military support — a claim Kigali denies. International actors, including the U.N., have called for an immediate halt to hostilities as regional leaders warn that excluding M23 from peace negotiations undermines efforts to end the conflict.</p>
+
+<p>M23, formed in 2012 and widely seen as supported by Rwanda, has waged a campaign in eastern Congo that has captured major cities like Goma and Bukavu earlier this year, contributing to one of the world’s most protracted humanitarian crises.</p>
+
+<p>With Uvira under rebel control and peace talks faltering, analysts warn that the conflict could widen unless a more inclusive political process is pursued and external backers are pressured to de-escalate.</p>
+<img src="/IMG-20251212-WA0001.jpg" alt="">
+<button>read more</button>
+    </div>
+    <div class="post2">
+      <h1>Police Officer Shoots Civilian, DASSO Agent Before Taking Own Life in Rutsiro</h1>
+      
+
+<span>By ndizeye tumusifu</span>
+
+
+<p>RUTSIRO DISTRICT, Rwanda — A police officer shot and seriously wounded a civilian and a member of the District Administration Security Support Organ (DASSO) late Wednesday before turning the gun on himself and dying, police confirmed Thursday. </p>
+
+<p>The shooting occurred around midnight in Boneza Sector, Rutsiro District, when the officer opened fire on two people, injuring both before fatally shooting himself at the scene. The identities of the injured are being withheld pending notification of families. </p>
+
+ <p>Superintendent of Police Sylvestre Twajamahoro, police spokesperson for Western Province, verified the incident, saying the injured civilian and DASSO agent were rushed to Centre Hospitalier Universitaire de Kigali (CHUK) for treatment, while the officer’s body was taken to the Kigali Forensic Laboratory. An investigation into the motive and circumstances is underway. </p>
+
+<p>Authorities have not yet indicated what may have led to the shooting. Incidents of on-duty police discharging firearms against civilians or colleagues are rare in Rwanda, and such events typically draw prompt internal review. </p>
+
+ <p>The community in Boneza Sector was shaken by the incident, with residents reporting hearing gunshots around midnight. Local leaders have urged calm as investigators piece together the sequence of events leading up to the shootings. </p>
+
+ <p>Police say they will release further details as the investigation progresses and are expected to brief local authorities and the press as more information becomes available.</p>
+ <img src="/IMG-20251212-WA0000.jpg" alt="" />
+ <button>read more</button>
+    </div>
+  </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const LIMIT = 300;
+    
+    document.querySelectorAll(".post1, .post2").forEach(post => {
+      
+      const title = post.querySelector("h1");
+      const author = post.querySelector("span");
+      const paragraphs = post.querySelectorAll("p");
+      const button = post.querySelector("button");
+      
+      // Shyiraho class ku button (ntabyo guhindura HTML)
+      button.classList.add("toggle-btn");
+      
+      // Fata text yose mu bigize post
+      let fullText = "";
+      paragraphs.forEach(p => fullText += p.textContent + "\n\n");
+      fullText = fullText.trim();
+      
+      // Niba idarenze limit ntacyo dukora
+      if (fullText.length <= LIMIT) return;
+      
+      const shortText = fullText.slice(0, LIMIT) + "...";
+      
+      // Bika full content
+      post.dataset.full = fullText;
+      post.dataset.short = shortText;
+      
+      // Default: tugaragaza short text
+      paragraphs[0].textContent = shortText;
+      
+      // Hide other paragraphs
+      for (let i = 1; i < paragraphs.length; i++) {
+        paragraphs[i].style.display = "none";
+      }
+      
+      // Toggle logic
+      button.addEventListener("click", function() {
+        
+        const expanded = post.classList.toggle("expanded");
+        
+        if (expanded) {
+          // Show all text
+          paragraphs[0].textContent = post.dataset.full;
+          
+          // Show all p tags
+          for (let i = 1; i < paragraphs.length; i++) {
+            paragraphs[i].style.display = "block";
+          }
+          
+          this.textContent = "Show less";
+          
+        } else {
+          // Show short version
+          paragraphs[0].textContent = post.dataset.short;
+          
+          // Hide other p tags
+          for (let i = 1; i < paragraphs.length; i++) {
+            paragraphs[i].style.display = "none";
+          }
+          
+          this.textContent = "Read more";
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
